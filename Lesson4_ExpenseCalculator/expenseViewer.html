@@ -4,8 +4,8 @@
    <!--
       LIS 2360:  Web Application Development
       Lesson 4 Assignment
-      Author:  
-      Date:   
+      Author:  Kevin Gaydon
+      Date:   2/10/16
       Filename: expenseViewer.html
    -->
    <meta charset="utf-8" />
@@ -51,6 +51,7 @@
               </label>
           </p>
           
+          
           <!--************************************************************************************************
           * Task #1:  Add additional expense categories using the above code as an example.  The 
           *           following categories should be included:  Household, Transportation, and 
@@ -61,7 +62,21 @@
           *      2.)  Each name value must be unique and enclosed in quotes.  This value will be referenced
           *           later in the program and it must match EXACTLY including the case.
           *************************************************************************************************-->
-
+          <p><label for="householdInput">
+            Household (appliances, TV, etc.):
+              <input type="text" id="householdInput" name="hosuehold" />
+              </label>
+          </p>
+          <p><label for="transportationInput">
+            Transportation (car payment, gas, etc.):
+              <input type="text" id="transportationInput" name="transportation" />
+              </label>
+          </p>
+          <p><label for="miscellaneousInput">
+            Miscellaneous (repairs, junk, etc.):
+              <input type="text" id="miscellaneousInput" name="miscellaneous" />
+              </label>
+          </p>
 
 
         
@@ -84,7 +99,7 @@
                  <p id="foodPercentage">  </p>
                  <p id="householdPercentage">  </p>
                  <p id="transportationPercentage">  </p>
-                 <p id="otherPercentage">  </p>
+                 <p id="miscellaneousPercentage">  </p>
              </label>              
           </fieldset>
         </fieldset>
@@ -137,6 +152,9 @@
               
               var shelterAmt = document.getElementById("shelterInput").value;
               var foodAmt = document.getElementById("foodInput").value;
+              var householdAmt = document.getElementById("householdInput").value;
+              var transportationAmt = document.getElementById("transportationInput").value;
+              var miscellaneousAmt = document.getElementById("miscellaneousInput").value;
 
               
               
@@ -159,6 +177,9 @@
 
               shelterAmt = parseFloat(shelterAmt);
               foodAmt = parseFloat(foodAmt);
+              householdAmt = parseFloat(householdAmt);
+              transportationAmt = parseFloat(transportationAmt);
+              miscellaneousAmt = parseFloat(miscellaneousAmt);
 
 
 
@@ -178,7 +199,9 @@
               var totalExpenses; //total expenses for the user
               var shelterPct; //shelter category percentage
               var foodPct;  //food category percentage
-
+              var householdPct; //household category percentage
+              var transportationPct; //transportation category percentage
+              var miscellaneousPct; //miscellaneous category percentage
 
 
 
@@ -197,9 +220,13 @@
                *          variables declared in Task 4.  
               *******************************************************************************************************/   
          
-
+              totalExpenses = shelterAmt + foodAmt + householdAmt + transportationAmt + miscellaneousAmt;    
               shelterPct = 100 * (shelterAmt / totalExpenses);
               foodPct = 100 * (foodAmt / totalExpenses);
+              householdPct = 100 * (householdAmt / totalExpenses);
+              transportationPct = 100 * (transportationAmt / totalExpenses);
+              miscellaneousPct = 100 * (miscellaneousAmt / totalExpenses);
+              
 
 
               /******************************************************************************************************
@@ -212,7 +239,7 @@
                *          The getElementById() method is used to identify the place on the HTML page the calculation
                *          result will be placed.  It uses the specific id's, which were defined above.  The id names
                *          are given to you!!!!  You must add the remaining categories using the following id's:
-               *          householdPercentage, transportationPercentage, and otherPercentage.  It is case sensitive!!!
+               *          householdPercentage, transportationPercentage, and miscellaneousPercentage.  It is case sensitive!!!
                *          The toFixed() method is used to ensure a specified number of digits appear after the decimal
                *          place for the value.
                * 
@@ -223,6 +250,9 @@
               document.getElementById("totalExpenses").innerHTML = "<b>Total Expenses:     $</b> " + totalExpenses.toFixed(2);
               document.getElementById("shelterPercentage").innerHTML = "% for <b>shelter</b>:      " + shelterPct.toFixed(1);      
               document.getElementById("foodPercentage").innerHTML = "% for <b>food:</b>      " + foodPct.toFixed(1);
+              document.getElementById("householdPercentage").innerHTML = "% for <b>household:</b>      " + householdPct.toFixed(1);
+              document.getElementById("transportationPercentage").innerHTML = "% for <b>transportation:</b>      " + transportationPct.toFixed(1);
+              document.getElementById("miscellaneousPercentage").innerHTML = "% for <b>miscellaneous:</b>      " + miscellaneousPct.toFixed(1);
 
          
          
@@ -258,6 +288,10 @@
               document.getElementById("totalExpenses").innerHTML = ""; 
               document.getElementById("shelterPercentage").innerHTML = "";      
               document.getElementById("foodPercentage").innerHTML  = "";
+              document.getElementById("householdPercentage").innerHTML = ""; 
+              document.getElementById("transportationPercentage").innerHTML = ""; 
+              document.getElementById("miscellaneousPercentage").innerHTML = ""; 
+              
 
 
               
